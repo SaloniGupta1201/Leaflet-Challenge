@@ -158,4 +158,40 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       layer.bindPopup("Earthquake Magnitude: " + feature.properties.mag + "<br>Earthquake Location:<br>" + feature.properties.place);
     }
   }).addTo(earthquakes);
+  earthquakesLayer = earthquakes
+
+
+
+  // decrement remainingCalls by 1
+  --remainingCalls;
+  console.log(`Fetched earthquake data. Remaining calls: ${remainingCalls}`)
+
+  // check if ready to call createMap function
+  if (remainingCalls === 0) {
+    createMap(earthquakesLayer, faultlinelLayer)
+  }
+
+});
+
+//Grab data with d3
+d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json", function (data) {
+
+  var faultlines = new L.LayerGroup()
+
+  L.geoJson(data, {
+    color: "orange",
+    weight: 2,
+  }).addTo(faultlines);
+
+  faultlinelLayer = faultlines
+
+  // decrement remainingCalls by 1
+  --remainingCalls;
+  console.log(`Fetched faultline data. Remaining calls: ${remainingCalls}`)
+
+  // check if ready to call createMap function
+  if (remainingCalls === 0) {
+    createMap(earthquakesLayer, faultlinelLayer)
+  }
+
 });
