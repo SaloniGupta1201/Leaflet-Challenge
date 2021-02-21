@@ -1,9 +1,9 @@
 # Leaflet-Challenge - Visualizing Data with Leaflet
 
 ## Background
-This respository uses United States Geological Survey, or USGS for short! data wich is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes.
+This respository uses United States Geological Survey, or USGS for short! USGS data which is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes.
 
-In this project we can visualize earthquake data using html,Javascript, and Leaflet.
+In this project we can visualize earthquake data using html,css,Javascript, and Leaflet.
 
 ## The Task
 ### Level 1: Earthquakes Basic Visualization
