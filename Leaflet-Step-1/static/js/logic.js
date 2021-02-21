@@ -1,7 +1,7 @@
 // Creating map object
 var myMap = L.map("map", {
-    center: [38.89511, -77.03637],
-    zoom: 6
+    center: [37.09, -95.71],
+    zoom: 5
   });
 console.log("Welcome to Map Creation")
 
@@ -19,7 +19,6 @@ var geodata_url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all
 // Grab the data with d3
 d3.json(geodata_url, function(data) {
     console.log("Inside function to grab geojson data")
-  
   // This function returns the style data for each of the earthquakes we plot on
   // the map. We pass the magnitude of the earthquake into two separate functions
   // to calculate the color and radius.
@@ -27,7 +26,7 @@ d3.json(geodata_url, function(data) {
     return {
       opacity: 1,
       fillOpacity: 1,
-      fillColor: getColor(feature.properties.mag),
+      fillColor: getColor(feature.geometry.coordinates[2]),
       color: "#000000",
       radius: getRadius(feature.properties.mag),
       stroke: true,
@@ -36,17 +35,17 @@ d3.json(geodata_url, function(data) {
   }
 
   // This function determines the color of the marker based on the magnitude of the earthquake.
-  function getColor(magnitude) {
+  function getColor(depth) {
     switch (true) {
-      case magnitude > 5:
+      case depth > 90:
         return "#ea2c2c";
-      case magnitude > 4:
+      case depth > 70:
         return "#ea822c";
-      case magnitude > 3:
+      case depth > 50:
         return "#ee9c00";
-      case magnitude > 2:
+      case depth > 30:
         return "#eecc00";
-      case magnitude > 1:
+      case depth > 10:
         return "#d4ee00";
       default:
         return "#98ee00";
@@ -70,7 +69,9 @@ d3.json(geodata_url, function(data) {
     // Called on each feature
     onEachFeature: function(feature, layer) {
     // Giving each feature a pop-up with information pertinent to it
-    layer.bindPopup("Earthquake Magnitude: " + feature.properties.mag + "<br>Earthquake Location:<br>" + feature.properties.place);
+    layer.bindPopup("Earthquake Magnitude: " + feature.properties.mag + "<br>Depth: "
+    + feature.geometry.coordinates[2] + "<br>Earthquake Location:<br>" + feature.properties.place);
+    // console.log("Earthquake Magnitude:" + feature.properties.mag + "Earthquake Location:" + feature.properties.place);
   }
 }).addTo(myMap);
 //add legend on Bottom Right Corner
@@ -80,17 +81,19 @@ legend.onAdd = function (map) {
   //Dom Utility that puts legend into DIV & Info Legend
   var div = L.DomUtil.create('div', 'info legend'),
     //Magnitude Grades, stops at 5 magnitude
-    grades = [0, 1, 2, 3, 4, 5];
+    grades = [-10, 10, 30, 50, 70, 90];
 
   //Legend Label Earthquake <break> Magnitude  
-  div.innerHTML = 'Eathquake<br>Magnitude<br><hr>'
+  div.innerHTML = 'Eathquake<br>Depth<br><hr>'
 
   // loop through our density intervals and generate a label with a colored square for each interval
   for (var i = 0; i < grades.length; i++) {
     div.innerHTML +=
       //HTML code with nbs(non-breaking space) and ndash
-      '<i style="background:' + getColor(grades[i] + 1) + '">&nbsp&nbsp&nbsp&nbsp</i> ' +
-      grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+      '<i style="background:' 
+      + getColor(grades[i] + 1) 
+      + '">&nbsp&nbsp&nbsp&nbsp</i> ' 
+      + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
   }
 
   return div;
