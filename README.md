@@ -7,7 +7,7 @@ In this project we can visualize earthquake data using html,css,Javascript, and 
 
 ## The Task
 ### Level 1: Earthquakes Basic Visualization
-Using USGS GeoJSON Feed to get the data, and visualize all Earthquakes from the Past 7 Days.
+Using USGS GeoJSON Feed to get the data, and visualize all Earthquakes from the Past 7 Days. Earthquake data can be found at [USGS GeoJSON Feed page](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
 
 - The map is created by using Leaflet that plots all of the earthquakes from the data set based on their longitude and latitude.
 - Data markers are used to reflect the magnitude and depth of the earthquake in their size and color. Earthquakes with higher magnitudes should appear larger and the color spectrum started from green to red, wich means when depth increases the color goes from green to red.
