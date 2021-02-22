@@ -36,6 +36,8 @@ In this task:
 
 ![Earthquake USGS Image](./Leaflet-Step-1/Images/Leaflet.gif)
 
+You can view the app [here](https://salonigupta1201.github.io/Leaflet-Challenge/Leaflet-Step-1/index.html)
+
 ### About dataset
 The USGS provides earthquake data in a number of different formats, updated every 5 minutes. Visited the USGS GeoJSON Feed page and picked a data set to visualize. When clicked on a data set, for example 'All Earthquakes from the Past 7 Days', it gives a JSON representation of that data. Used the URL of this JSON to pull in the data for our visualization.
 ![Data Image](./Leaflet-Step-1/Images/4-JSON.png)
