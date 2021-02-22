@@ -33,3 +33,5 @@ In this task:
 - Add a layer controls to the map.
 
 ### The Final View Looks as Follows :
+
+![Earthquake USGS Image](./Leaflet-Step-1/Images/Leaflet.gif)
