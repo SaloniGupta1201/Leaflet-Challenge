@@ -1,4 +1,6 @@
 # Leaflet-Challenge - Visualizing Data with Leaflet
+**Submitted By:** Saloni Gupta\
+_Date_: february, 21st, 2020 
 
 ## Background
 This respository uses United States Geological Survey, or USGS for short! USGS data which is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes.
